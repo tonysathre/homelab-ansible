@@ -1,0 +1,28 @@
+- name: Configure DNS Client (Stand-alone Server)
+  win_dns_client:
+    adapter_names: Ethernet0
+    ipv4_addresses: "{{ hostvars[inventory_hostname]['ansible_ip_addresses'][1] }}"
+  when: ansible_facts['windows_domain_role'] == "Stand-alone server"
+
+- name: Configure first domain controller in forest
+  win_domain_controller:
+    install_dns: true
+    database_path: "{{ ansible_env.SYSTEMROOT }}\\NTDS"
+    sysvol_path: "{{ ansible_env.SYSTEMROOT }}\\SYSVOL"
+    dns_domain_name:
+    domain_admin_password:
+    install_media_path:
+    local_admin_password:
+    log_path:
+    read_only: false
+    safe_mode_password:
+    site_name:
+    state: domain_controller
+
+
+
+
+
+#- debug: msg="{{ hostvars[inventory_hostname]['ansible_ip_addresses'] }}"
+#  with_items:
+#     - "{{ groups['pdc'][0] }}"
