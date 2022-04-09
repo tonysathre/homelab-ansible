@@ -1,0 +1,12 @@
+---
+- name: Common Windows Server Setup
+  gather_facts: true
+  hosts: all
+  roles:
+    - common
+
+- name: Configure first domain controller in forest
+  gather_facts: true
+  hosts: pdc
+  roles:
+    - ad-pdc

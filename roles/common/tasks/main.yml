@@ -1,0 +1,3 @@
+---
+- name: "Set Timezone"
+  include_tasks: "{{ ansible_role_name }}.yml"

@@ -1,0 +1,17 @@
+[all]
+10.0.0.5
+10.0.0.6
+
+[pdc]
+10.0.0.5
+
+[bdc]
+10.0.0.6
+
+[all:vars]
+ansible_connection=winrm
+ansible_winrm_transport=ntlm
+ansible_winrm_scheme=http
+ansible_port=5985
+ansible_user=Administrator
+ansible_password=Password
